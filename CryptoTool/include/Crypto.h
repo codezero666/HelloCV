@@ -1,7 +1,9 @@
+//保护头文件
 #ifndef CRYPTO_H
 #define CRYPTO_H
 
 #include <string>
+#include <cctype>
 
 enum class Algorithm 
 {

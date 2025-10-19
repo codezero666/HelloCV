@@ -1,3 +1,4 @@
+//保护头文件
 #ifndef MENU_H
 #define MENU_H
 

@@ -2,6 +2,7 @@
 #include <algorithm>
 #include <fstream>
 #include <stdexcept>
+#include <iostream>
 
 using namespace std;
 
@@ -14,7 +15,8 @@ void Crypto::setAlgorithm(Algorithm algo)
 
 string Crypto::encryptText(const string& text, const string& key) 
 {
-    switch (currentAlgorithm) {
+    switch (currentAlgorithm) 
+    {
         case Algorithm::CAESAR:
             return caesarEncrypt(text, getShiftFromKey(key));
         case Algorithm::XOR:
@@ -28,7 +30,8 @@ string Crypto::encryptText(const string& text, const string& key)
 
 string Crypto::decryptText(const string& encryptedText, const string& key) 
 {
-    switch (currentAlgorithm) {
+    switch (currentAlgorithm) 
+    {
         case Algorithm::CAESAR:
             return caesarDecrypt(encryptedText, getShiftFromKey(key));
         case Algorithm::XOR:
@@ -43,7 +46,8 @@ string Crypto::decryptText(const string& encryptedText, const string& key)
 bool Crypto::encryptFile(const string& inputFile, const string& outputFile, const string& key) 
 {
     ifstream inFile(inputFile);
-    if (!inFile) {
+    if (!inFile) 
+    {
         return false;
     }
     
@@ -54,7 +58,8 @@ bool Crypto::encryptFile(const string& inputFile, const string& outputFile, cons
     string encrypted = encryptText(content, key);
     
     ofstream outFile(outputFile);
-    if (!outFile) {
+    if (!outFile) 
+    {
         return false;
     }
     
@@ -67,7 +72,8 @@ bool Crypto::encryptFile(const string& inputFile, const string& outputFile, cons
 bool Crypto::decryptFile(const string& inputFile, const string& outputFile, const string& key) 
 {
     ifstream inFile(inputFile);
-    if (!inFile) {
+    if (!inFile) 
+    {
         return false;
     }
     
@@ -78,7 +84,8 @@ bool Crypto::decryptFile(const string& inputFile, const string& outputFile, cons
     string decrypted = decryptText(content, key);
     
     ofstream outFile(outputFile);
-    if (!outFile) {
+    if (!outFile) 
+    {
         return false;
     }
     
@@ -88,12 +95,36 @@ bool Crypto::decryptFile(const string& inputFile, const string& outputFile, cons
     return true;
 }
 
+//字符串密钥转换为ASCII，整型密钥当整型处理
+int Crypto::getShiftFromKey(const string& key) 
+{
+    //默认key为3
+    if (key.empty()) return 3;
+    
+    int shift = 0;
+    if (key[0]<'0'||key[0]>'9')
+    {
+        for (char c : key) 
+        {
+            shift += static_cast<int>(c);
+        }
+    }
+    else
+    {
+        shift = stoi(key);
+    }
+    return shift % 26;
+}
+
+//进行凯撒加密
 string Crypto::caesarEncrypt(const string& text, int shift) 
 {
     string result;
     
-    for (char c : text) {
-        if (isalpha(c)) {
+    for (char c : text) 
+    {
+        if (isalpha(c)) 
+        {
             char base = islower(c) ? 'a' : 'A';
             c = (c - base + shift) % 26 + base;
         }
@@ -103,24 +134,30 @@ string Crypto::caesarEncrypt(const string& text, int shift)
     return result;
 }
 
+//进行凯撒解密
 string Crypto::caesarDecrypt(const string& text, int shift) 
 {
     return caesarEncrypt(text, 26 - (shift % 26));
 }
 
-string Crypto::xorEncryptDecrypt(const string& text, const string& key) {
+//进行XOR加密和解密
+string Crypto::xorEncryptDecrypt(const string& text, const string& key) 
+{
+    //空密钥判断
     if (key.empty()) return text;
     
     string result;
-    size_t keyLength = key.length();
+    size_t keyLength = key.length(); //size_t为无符号整数
     
-    for (size_t i = 0; i < text.length(); ++i) {
+    for (size_t i = 0; i < text.length(); i++) 
+    {
         result += text[i] ^ key[i % keyLength];
     }
     
     return result;
 }
 
+//进行反转加密
 string Crypto::reverseEncrypt(const string& text) 
 {
     string result = text;
@@ -128,18 +165,8 @@ string Crypto::reverseEncrypt(const string& text)
     return result;
 }
 
+//进行反转解密
 string Crypto::reverseDecrypt(const string& text) 
 {
     return reverseEncrypt(text);
-}
-
-int Crypto::getShiftFromKey(const string& key) 
-{
-    if (key.empty()) return 3;
-    
-    int shift = 0;
-    for (char c : key) {
-        shift += static_cast<int>(c);
-    }
-    return shift % 26;
 }
