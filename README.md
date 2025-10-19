@@ -5,7 +5,7 @@ Cmake：https://www.yuque.com/codezero-kv7wr/byma8n/wkykb7p3d1qbkt86#
 
 # 程序使用方法  
 ## 1、编译  
-（推荐）可以使用自动脚本编译：在主文件内打开bush，输入./build,sh  
+（推荐）可以使用自动脚本编译：在主文件夹内打开bush，输入./build,sh  
 也可以手动创建build文件夹，cd build，然后cmake ..，再make  
 ## 2、运行
 建议进入/bin内打开终端运行，便于后期文件加密解密输入相对路径  
