@@ -18,3 +18,5 @@ Cmake：https://www.yuque.com/codezero-kv7wr/byma8n/wkykb7p3d1qbkt86#
 如果你是在主目录文件内./bin/CryptoTool运行的，输入文件路径需要写./bin/xxx.txt  
 如果你是在bin/目录下，输入文件路径需要写xxx.txt  
 输出文件路径建议也写在bin/目录下（与可执行文件同级）
+## 5、注意事项
+使用凯撒加密时密钥建议使用非负数或纯字符串
