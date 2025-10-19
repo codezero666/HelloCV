@@ -20,3 +20,5 @@ Cmake：https://www.yuque.com/codezero-kv7wr/byma8n/wkykb7p3d1qbkt86#
 输出文件路径建议也写在bin/目录下（与可执行文件同级）
 ## 5、注意事项
 使用凯撒加密时密钥建议使用非负数或纯字符串
+本代码采用简单的XOR加密，部分情况可能输出空字符
+反转加密会索取用不上的密钥
