@@ -9,6 +9,7 @@ echo "=== 清理构建文件 ==="
 # -r 原始模式，不解释反斜杠转义字符
 read -p "确定要删除 build 和 bin 目录吗？(y/n): " -n 1 -r
 echo # 换行
+
 # $REPLY是read命令的默认变量，存储用户输入
 # 这是正则表达式写法
 if [[ $REPLY =~ ^[Yy]$ ]]; then

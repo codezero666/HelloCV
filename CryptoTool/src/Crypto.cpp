@@ -1,4 +1,5 @@
 #include "Crypto.h"
+#include "FileHandler.h"
 #include <algorithm>
 #include <fstream>
 #include <stdexcept>
@@ -6,13 +7,16 @@
 
 using namespace std;
 
+//初始化列表构造函数
 Crypto::Crypto(Algorithm algo) : currentAlgorithm(algo) {}
 
+//设置加密算法
 void Crypto::setAlgorithm(Algorithm algo) 
 {
     currentAlgorithm = algo;
 }
 
+//文本加密
 string Crypto::encryptText(const string& text, const string& key) 
 {
     switch (currentAlgorithm) 
@@ -28,6 +32,7 @@ string Crypto::encryptText(const string& text, const string& key)
     }
 }
 
+//文本解密
 string Crypto::decryptText(const string& encryptedText, const string& key) 
 {
     switch (currentAlgorithm) 
@@ -43,56 +48,27 @@ string Crypto::decryptText(const string& encryptedText, const string& key)
     }
 }
 
+//文件加密
 bool Crypto::encryptFile(const string& inputFile, const string& outputFile, const string& key) 
 {
-    ifstream inFile(inputFile);
-    if (!inFile) 
-    {
-        return false;
-    }
     
-    string content((istreambuf_iterator<char>(inFile)), 
-                   istreambuf_iterator<char>());
-    inFile.close();
-    
+    //读取文件内容
+    string content = FileHandler::readFile(inputFile); 
+
+    //加密后并写入文件
     string encrypted = encryptText(content, key);
-    
-    ofstream outFile(outputFile);
-    if (!outFile) 
-    {
-        return false;
-    }
-    
-    outFile << encrypted;
-    outFile.close();
-    
-    return true;
+    FileHandler::writeFile(outputFile,encrypted);
 }
 
+//文件解密
 bool Crypto::decryptFile(const string& inputFile, const string& outputFile, const string& key) 
 {
-    ifstream inFile(inputFile);
-    if (!inFile) 
-    {
-        return false;
-    }
+    //读取文件内容
+    string content = FileHandler::readFile(inputFile); 
     
-    string content((istreambuf_iterator<char>(inFile)), 
-                   istreambuf_iterator<char>());
-    inFile.close();
-    
+    //解密后并写入文件
     string decrypted = decryptText(content, key);
-    
-    ofstream outFile(outputFile);
-    if (!outFile) 
-    {
-        return false;
-    }
-    
-    outFile << decrypted;
-    outFile.close();
-    
-    return true;
+    FileHandler::writeFile(outputFile,decrypted);
 }
 
 //字符串密钥转换为ASCII，整型密钥当整型处理

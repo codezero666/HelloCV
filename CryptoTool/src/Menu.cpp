@@ -5,6 +5,7 @@
 
 using namespace std;
 
+//展示终端操作菜单
 void Menu::showMainMenu() 
 {
     cout << "\n=== 简易文本加密解密工具 ===\n";
@@ -17,6 +18,7 @@ void Menu::showMainMenu()
     cout << "请选择功能: ";
 }
 
+//处理输入的选项
 void Menu::handleChoice(int choice) 
 {
     switch (choice) 
@@ -37,13 +39,24 @@ void Menu::handleChoice(int choice)
             selectAlgorithmMenu();
             break;
         case 0:
-            cout << "感谢使用，再见！\n";
+            cout << "感谢使用，ヾ(￣▽￣)Bye~Bye~\n";
             break;
         default:
             cout << "无效选择，请重新输入！\n";
     }
 }
 
+
+//给出提示信息并获取输入
+string Menu::getInput(const string& prompt) 
+{
+    string input;
+    cout << prompt;
+    getline(cin, input);
+    return input;
+}
+
+//文本加密菜单
 void Menu::textEncryptMenu() 
 {
     cout << "\n--- 文本加密 ---\n";
@@ -54,6 +67,7 @@ void Menu::textEncryptMenu()
     cout << "加密结果: " << encrypted << endl;
 }
 
+//文本解密菜单
 void Menu::textDecryptMenu() 
 {
     cout << "\n--- 文本解密 ---\n";
@@ -64,12 +78,14 @@ void Menu::textDecryptMenu()
     cout << "解密结果: " << decrypted << endl;
 }
 
+//文件加密菜单
 void Menu::fileEncryptMenu() 
 {
     cout << "\n--- 文件加密 ---\n";
     string inputFile = getInput("请输入要加密的文件路径: ");
     
-    if (!FileHandler::fileExists(inputFile)) {
+    if (!FileHandler::fileExists(inputFile)) 
+    {
         cout << "文件不存在！\n";
         return;
     }
@@ -77,19 +93,22 @@ void Menu::fileEncryptMenu()
     string key = getInput("请输入密钥: ");
     string outputFile = getInput("请输入输出文件路径: ");
     
-    if (crypto.encryptFile(inputFile, outputFile, key)) {
+    if (crypto.encryptFile(inputFile, outputFile, key)) 
+    {
         cout << "加密结果已保存到: " << outputFile << endl;
     } else {
         cout << "文件加密失败！\n";
     }
 }
 
+//文件解密菜单
 void Menu::fileDecryptMenu() 
 {
     cout << "\n--- 文件解密 ---\n";
     string inputFile = getInput("请输入要解密的文件路径: ");
     
-    if (!FileHandler::fileExists(inputFile)) {
+    if (!FileHandler::fileExists(inputFile)) 
+    {
         cout << "文件不存在！\n";
         return;
     }
@@ -97,13 +116,15 @@ void Menu::fileDecryptMenu()
     string key = getInput("请输入密钥: ");
     string outputFile = getInput("请输入输出文件路径: ");
     
-    if (crypto.decryptFile(inputFile, outputFile, key)) {
+    if (crypto.decryptFile(inputFile, outputFile, key)) 
+    {
         cout << "解密结果已保存到: " << outputFile << endl;
     } else {
         cout << "文件解密失败！\n";
     }
 }
 
+//选择加密算法菜单
 void Menu::selectAlgorithmMenu() 
 {
     cout << "\n--- 选择加密算法 ---\n";
@@ -116,7 +137,8 @@ void Menu::selectAlgorithmMenu()
     cin >> choice;
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
     
-    switch (choice) {
+    switch (choice) 
+    {
         case 1:
             crypto.setAlgorithm(Algorithm::CAESAR);
             cout << "已选择凯撒密码算法\n";
@@ -132,12 +154,4 @@ void Menu::selectAlgorithmMenu()
         default:
             cout << "无效选择，保持当前算法\n";
     }
-}
-
-string Menu::getInput(const string& prompt) 
-{
-    string input;
-    cout << prompt;
-    getline(cin, input);
-    return input;
 }
