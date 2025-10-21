@@ -22,5 +22,5 @@ file(GLOB SOURCES "src/*.cpp")
 # 添加可执行文件
 add_executable(CryptoTool ${SOURCES})
 
-# 设置编译属性
+# 设置编译属性（仅对该目标生效）
 target_compile_features(CryptoTool PRIVATE cxx_std_11)
