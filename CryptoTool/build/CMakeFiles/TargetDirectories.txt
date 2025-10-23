@@ -1,3 +1,0 @@
-/home/zoupeng/HelloCV/CryptoTool/build/CMakeFiles/CryptoTool.dir
-/home/zoupeng/HelloCV/CryptoTool/build/CMakeFiles/edit_cache.dir
-/home/zoupeng/HelloCV/CryptoTool/build/CMakeFiles/rebuild_cache.dir
