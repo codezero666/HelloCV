@@ -1,0 +1,3 @@
+/home/zoupeng/HelloCV/Week3/opencvtest/build/CMakeFiles/opencvtest.dir
+/home/zoupeng/HelloCV/Week3/opencvtest/build/CMakeFiles/edit_cache.dir
+/home/zoupeng/HelloCV/Week3/opencvtest/build/CMakeFiles/rebuild_cache.dir
