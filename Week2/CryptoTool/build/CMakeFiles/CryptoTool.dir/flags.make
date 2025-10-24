@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/zoupeng/HelloCV/CryptoTool/include
+CXX_INCLUDES = -I/home/zoupeng/HelloCV/Week2/CryptoTool/include
 
 CXX_FLAGS = -std=gnu++11
 
