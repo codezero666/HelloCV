@@ -1,7 +1,8 @@
 # 第三周
 ## 语雀文档
 OpenCV4.5学习：https://www.yuque.com/codezero-kv7wr/byma8n/nyka649oenze4boz#  
-## 程序实现思路
+OpenCV小测试：https://www.yuque.com/codezero-kv7wr/byma8n/rtkrayg2ox7yg2kq  
+## 程序实现思路（简要）
 1、先根据红绿色HSV范围筛选出2个蒙版  
 2、在标出轮廓  
 3、根据轮廓过滤掉除圆形灯外的元素  
