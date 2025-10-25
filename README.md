@@ -17,3 +17,4 @@ OpenCV小测试：https://www.yuque.com/codezero-kv7wr/byma8n/rtkrayg2ox7yg2kq
 ### 3、注意事项
 运行时会快速播放预览视频  
 预览视频播放完后avi视频便生成成功，在video目录内  
+若无法播放avi，可尝试sudo apt update和sudo apt install vlc，使用vlc播放器来播放  
