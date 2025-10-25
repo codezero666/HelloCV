@@ -13,3 +13,4 @@
 ### 3、注意事项
 运行时会快速播放预览视频  
 预览视频播放完后avi视频便生成成功，在Week3/opencvtest/video目录内  
+若无法播放avi，可尝试sudo apt update和sudo apt install vlc，使用vlc播放器来播放  
