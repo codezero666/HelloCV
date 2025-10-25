@@ -401,7 +401,7 @@ CMakeFiles/opencvtest.dir/src/main.cpp.o
  /usr/local/include/opencv4/opencv2/video.hpp
  /usr/local/include/opencv4/opencv2/video/tracking.hpp
  /usr/local/include/opencv4/opencv2/video/background_segm.hpp
- /home/zoupeng/HelloCV/Week3/opencvtest/include/mytools.h
+ /home/zoupeng/HelloCV/Week3/opencvtest/src/mytools.h
 
 CMakeFiles/opencvtest.dir/src/mytools.cpp.o
  /home/zoupeng/HelloCV/Week3/opencvtest/src/mytools.cpp

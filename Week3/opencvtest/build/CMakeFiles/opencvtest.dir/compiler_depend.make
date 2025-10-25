@@ -400,7 +400,7 @@ CMakeFiles/opencvtest.dir/src/main.cpp.o: ../src/main.cpp \
   /usr/local/include/opencv4/opencv2/video.hpp \
   /usr/local/include/opencv4/opencv2/video/tracking.hpp \
   /usr/local/include/opencv4/opencv2/video/background_segm.hpp \
-  ../include/mytools.h
+  ../src/mytools.h
 
 CMakeFiles/opencvtest.dir/src/mytools.cpp.o: ../src/mytools.cpp \
   /usr/include/stdc-predef.h \
@@ -1331,6 +1331,8 @@ CMakeFiles/opencvtest.dir/src/mytools.cpp.o: ../src/mytools.cpp \
 /usr/include/x86_64-linux-gnu/c++/11/bits/c++locale.h:
 
 /usr/local/include/opencv4/opencv2/core/matx.hpp:
+
+../src/mytools.h:
 
 /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h:
 
